@@ -1,20 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+@import url('https://fonts.googleapis.com/css?family=Chakra+Petch|Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono');
+
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#head {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 30px;
+    margin: 12px;
+    text-align: center;
+    color: #F3B63A;
+    font-weight: 600;
+}
+
+.sub-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #F3B63A;
+    font-weight: 600;
+}
+
+#ai {
+    color: #29B6F6;
+}
+.board {
+    background: #333945;
+    color: #fff;
+    min-height: 100vh;
+}
+
 td {
-    border: 2px solid #333;
+    border: 1px solid #F3B63A;
     height: 100px;
     width: 100px;
     text-align: center;
     vertical-align: center;
-    /* font family */
-    font-size: 70px;
+    font-family: 'Orbitron', sans-serif;
+    font-size:60px;
     cursor: pointer;
 }
 
 table {
-    border-collapse: collapse;
-    position: absolute;
-    left: 50%;
-    margin-left: -155px;
-    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 table tr:first-child td {
@@ -32,6 +74,55 @@ table tr td:last-child {
     border-right: 0;
 }
 
+#play-agn {
+    padding: 0.8rem;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    background: #29B6F6;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide {
+    display: none;
+}
+
 .endgame {
+    margin: 1rem 0;
+    height: 2rem;
+    font-size: 2rem;
+    animation: glow 1s;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 500;
+}
+#tic {
+    color: coral;
+    }
     
+    #tac {
+    color: royalblue;
+    }
+    
+    #toe {
+    color: yellowgreen;
+    }
+@keyframes glow{
+    from {
+        opacity: 0;
+        }
+    to{
+        opacity: 1;
+        }
+    }
+
+@keyframes blink {
+    from {
+    color: #3498db;
+    }
+    to {
+    color: #F3B63A;
+    }
 }

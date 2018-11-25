@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <title>Tic-Tac-Toe</title>
 </head>
-<body>
+<body class="board">
+    <div id="head">
+            <h1 ><span id="tic">Tic</span>-<span id="tac">Tac</span>-<span id="toe">Toe</span></h1>  
+    </div> 
+    <p class="sub-text">[ Can you beat the <span id="ai">AI</span> ? ]</p>
     <table>
         <tr>
             <td class="cell" id="0"></td>
@@ -25,10 +29,13 @@
             <td class="cell" id="8"></td>
         </tr>
     </table>
-    <div class="endgame">
+    <div class="endgame hide">
         <div class="text"></div>
+        <div class="playagain">
+        <button id="play-agn" onclick="begin()">Play again!</button>
+        </div>
     </div>
-    <button onclick="begin()">Play again!</button>
+   
     <script src="script.js"></script>
 </body>
 </html>
