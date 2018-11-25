@@ -73,8 +73,8 @@ function begin () {
     }
 
     function bestSpot() {
-        return emptyCells()[0];
-
+        // return emptyCells()[0];
+        return minmax(board, aiPlayer).index;
     }
 
     function checkTie() {
@@ -88,3 +88,52 @@ function begin () {
         }
         return false;
     }
+
+    function minmax(newBoard, player) {
+        var availSpots = emptyCells(newBoard);
+        
+        if (checkWinner(newBoard, humanPlayer)) {
+          return {score: -10};
+        } else if (checkWinner(newBoard, aiPlayer)) {
+          return {score: 10};
+        } else if (availSpots.length === 0) {
+          return {score: 0};
+        }
+        
+        var moves = [];
+        for (let i = 0; i < availSpots.length; i ++) {
+          var move = {};
+          move.index = newBoard[availSpots[i]];
+          newBoard[availSpots[i]] = player;
+          
+          if (player === aiPlayer)
+            move.score = minmax(newBoard, humanPlayer).score;
+          else
+             move.score =  minmax(newBoard, aiPlayer).score;
+          newBoard[availSpots[i]] = move.index;
+          if ((player === aiPlayer && move.score === 10) || (player === humanPlayer && move.score === -10))
+            return move;
+          else 
+            moves.push(move);
+        }
+        
+        let bestMove, bestScore;
+        if (player === aiPlayer) {
+          bestScore = -1000;
+          for(let i = 0; i < moves.length; i++) {
+            if (moves[i].score > bestScore) {
+              bestScore = moves[i].score;
+              bestMove = i;
+            }
+          }
+        } else {
+            bestScore = 1000;
+            for(let i = 0; i < moves.length; i++) {
+            if (moves[i].score < bestScore) {
+              bestScore = moves[i].score;
+              bestMove = i;
+            }
+          }
+        }
+        return moves[bestMove];
+      }
